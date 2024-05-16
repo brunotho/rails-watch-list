@@ -1,0 +1,41 @@
+<h1><%= link_to "Index", lists_path %></h1>
+
+<p>List name: <%= @list.name %></p>
+
+
+
+
+<div class="row">
+  <% @list.movies.each do |movie| %>
+  <% bookmark = Bookmark.find_by(movie: movie, list: @list) %>
+    <div class="col-4">
+      <div class="card" style="width: 18rem;">
+        <h3><%= movie.title %></h3>
+        <img src=<%= movie.poster_url %> alt="movie poster">
+        <p><%= bookmark.comment %></p>
+        <%= link_to "delete this bookmark",
+        list_bookmark_path(@list, bookmark),
+        data: {turbo_method: :delete, turbo_confirm: "Are you sure?"} %>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<div class="row">
+    <div class="col-6">
+
+    <div class="crd">
+      <h2>add another movie</h2>
+      <%= simple_form_for [@list, @bookmark], html: { class: 'form-horizontal' },wrapper: :horizontal_form do |f| %>
+        <%= f.input :comment %>
+        <%= f.association :movie %>
+        <%= f.submit "Submit", class: "btn btn-primary" %>
+      <% end %>
+    </div>
+  </div>a
+</div>
+
+<%# @list.id, @list.bookmarks.where(:movie_id == movie.id) %>
+<%# list_bookmark_path(@list.bookmarks.where(movie_id: movie.id)), %>
+
+<%# list_bookmark_path(@list.bookmarks.where(:movie_id == movie.id)) %>

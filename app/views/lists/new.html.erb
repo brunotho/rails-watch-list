@@ -1,0 +1,8 @@
+<div class="container">
+<h2>hi i'm new list page</h2>
+
+  <%= simple_form_for @list, html: { class: 'form-horizontal' },wrapper: :horizontal_form do |f| %>
+    <%= f.input :name %>
+    <%= f.submit "Submit", class: "btn btn-primary" %>
+  <% end %>
+</div>
