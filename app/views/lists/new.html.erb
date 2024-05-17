@@ -3,6 +3,8 @@
 
   <%= simple_form_for @list, html: { class: 'form-horizontal' },wrapper: :horizontal_form do |f| %>
     <%= f.input :name %>
+    <%# <%= f.input :photo, as: :file %>
+
     <%= f.submit "Submit", class: "btn btn-primary" %>
   <% end %>
 </div>

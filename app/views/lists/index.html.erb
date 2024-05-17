@@ -3,4 +3,6 @@
   <% @lists.each do |list| %>
     <li><%= link_to list.name, list_show_path(list.id) %></li>
   <% end %>
+
+  <%= link_to "new list", lists_new_path %>
 </ul>
